@@ -3,6 +3,11 @@ import pandas as pd
 import cities
 from init import initialize
 
+st.set_page_config(
+    page_title="STAR Experiences",
+    page_icon="🌟"
+)
+
 # Sample data for cities and attractions
 attractions = {'museum': '🖼️ Museum', 'park': '⛲ Park', 'theater': '🎭 Theater', 'zoo': '🦍 Zoo', 'aquarium': '🦈 Aquarium'}
 temptations = {'restaurant': '⭐ Michelin Restaurant', 'shopping': '🛍️ Shopping', 'spa': '💆‍♀️ Spa', 'nightclub': '💃 Nightclub', 'casino': '🎰 Casino'}
@@ -11,7 +16,7 @@ tabs = ["Step 1: Travel Details", "Step 2: Select Attractions", "Step 3: Pick Te
 initialize(st.session_state, tabs)
 
 # Title
-st.title("Star Experiences")
+st.title("STAR Experiences")
 
 # Create tabs
 current_tab = st.segmented_control("Select Step", tabs, key="active_tab")
