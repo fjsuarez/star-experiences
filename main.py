@@ -92,26 +92,26 @@ elif current_tab == tabs[3]:
         st.write(f"Plan Selected: {st.session_state.plan_selected.capitalize()} Plan")
         st.write("Total Cost: $1000")
 
-cols = st.columns(3)
-
-with cols[0]:
-    if st.button("Back", disabled=current_tab == tabs[0] or not current_tab):
-        prev_tab = tabs.index(current_tab) - 1
-        del st.session_state.active_tab
-        st.session_state.active_tab = tabs[prev_tab]
-        st.rerun()
-with cols[1]:
-    if st.button("Restart"):
-        for key in st.session_state.keys():
-            del st.session_state[key]
-        st.session_state.active_tab = tabs[0]
-        st.rerun()
-with cols[2]:
-    if st.button("Next", disabled=current_tab == tabs[-1] or not current_tab):
-        next_tab = tabs.index(current_tab) + 1
-        del st.session_state.active_tab
-        st.session_state.active_tab = tabs[next_tab]
-        st.rerun()
+with st.container():
+    cols = st.columns(3)
+    with cols[0]:
+        if st.button("Back", disabled=current_tab == tabs[0] or not current_tab):
+            prev_tab = tabs.index(current_tab) - 1
+            del st.session_state.active_tab
+            st.session_state.active_tab = tabs[prev_tab]
+            st.rerun()
+    with cols[1]:
+        if st.button("Restart"):
+            for key in st.session_state.keys():
+                del st.session_state[key]
+            st.session_state.active_tab = tabs[0]
+            st.rerun()
+    with cols[2]:
+        if st.button("Next", disabled=current_tab == tabs[-1] or not current_tab):
+            next_tab = tabs.index(current_tab) + 1
+            del st.session_state.active_tab
+            st.session_state.active_tab = tabs[next_tab]
+            st.rerun()
 
 st.markdown(
     """
@@ -133,3 +133,12 @@ st.markdown(
     </style>
     """,unsafe_allow_html=True
 )
+
+st.markdown('''<style>
+
+div[data-testid="stVerticalBlock"]:last-child > div[data-testid="stHorizontalBlock"]:last-child > div[data-testid="stColumn"] {
+    width: calc(33.3333% - 1rem) !important;
+    flex: 1 1 calc(33.3333% - 1rem) !important;
+    min-width: calc(33% - 1rem) !important;
+}
+</style>''', unsafe_allow_html=True)
