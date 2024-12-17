@@ -19,7 +19,7 @@ temptations = {temptation['Marker']: location for location, temptation in iterto
 initialize(st.session_state, tabs)
 
 # Title
-st.title("STAR Experiences")
+st.image('header.png')
 
 # Create tabs
 current_tab = st.segmented_control("Select Step", tabs, key="active_tab")
