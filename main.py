@@ -12,7 +12,7 @@ st.set_page_config(
 )
 
 tabs = ["1: Travel Details", "2: Select Attractions", "3: Pick Temptations", "4: Choose Transport", "5: Choose Plan"]
-transport_options = ["🚌 Bus", "🚁 Helicopter"]
+transport_options = ["🚌 Bus", "🚁 Helicopter (+150€ each)"]
 attractions = {attraction['Marker']: location for location, attraction in itertools.islice(cities.attractions.items(), 8, 16)}
 temptations = {temptation['Marker']: location for location, temptation in itertools.islice(cities.attractions.items(), 8)}
 
@@ -35,13 +35,13 @@ if current_tab == tabs[0]:
 elif current_tab == tabs[1]:
     st.header("Select Attractions")
     for location, attraction in itertools.islice(cities.attractions.items(), 8, 16):
-        st.session_state[f"sel_{attraction['Marker']}"] = st.checkbox(f"{attraction['Icon']} {attraction['Activity']}", value=st.session_state[f"sel_{attraction['Marker']}"], key=attraction['Marker'])
+        st.session_state[f"sel_{attraction['Marker']}"] = st.checkbox(f"{attraction['Icon']} {attraction['Activity']} (+{attraction['Price']}€ each)", value=st.session_state[f"sel_{attraction['Marker']}"], key=attraction['Marker'])
 
 # Step 3: Pick Temptations
 elif current_tab == tabs[2]:
     st.header("Pick Temptations")
     for location, attraction in itertools.islice(cities.attractions.items(), 8):
-        st.session_state[f"sel_{attraction['Marker']}"] = st.checkbox(f"{attraction['Icon']} {attraction['Activity']}", value=st.session_state[f"sel_{attraction['Marker']}"], key=attraction['Marker'])
+        st.session_state[f"sel_{attraction['Marker']}"] = st.checkbox(f"{attraction['Icon']} {attraction['Activity']} (+{attraction['Price']}€ each)", value=st.session_state[f"sel_{attraction['Marker']}"], key=attraction['Marker'])
 
 # Step 4: Choose Transport
 elif current_tab == tabs[3]:
